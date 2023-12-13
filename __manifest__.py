@@ -1,0 +1,5 @@
+{
+    'name': "Rental Property",
+    'data': [
+    ],
+}
