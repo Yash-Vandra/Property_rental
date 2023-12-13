@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="rental_customer_form" model="ir.ui.view">
+        <field name="name">rental.customer.form</field>
+        <field name="model">customer.customer</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" type="object" name="customer_preview" string="Customer Preview"
+                                icon="fa-users">
+                            <div class="o_field_widget o_start_info">
+                                <span class="o_start_text">Customer</span>
+                                <span class="o_start_text">Preview</span>
+                            </div>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="last_name"/>
+                            <field name="email" widget="email"/>
+                            <field name="phone"/>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                        </group>
+                        <group>
+                            <field name="documents"/>
+                            <field name="property_name"/>
+                            <field name="charges_paid"/>
+                            <field name="duration_of_stay"/>
+                            <field name="rent_agreement_copy"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="rental_customer_tree" model="ir.ui.view">
+        <field name="name">rental.customer.tree</field>
+        <field name="model">customer.customer</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="last_name"/>
+                <field name="email"/>
+                <field name="phone"/>
+                <field name="documents"/>
+                <field name="property_name"/>
+                <field name="charges_paid"/>
+                <field name="start_date"/>
+                <field name="duration_of_stay"/>
+                <field name="rent_agreement_copy"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id='customer_data_actions' model='ir.actions.act_window'>
+        <field name="name">Customer Data</field>
+        <field name="res_model">customer.customer</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="rental_customer_sub_menu"
+              name="Customer records"
+              parent="rental_customer_menu"
+              action="customer_data_actions"
+              sequence="10"
+    />
+
+</odoo>
+

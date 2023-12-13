@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!--    root menu -->
+    <menuitem id="property_rental_root_menu"
+              name="Rental Property"
+              sequence="10"
+    />
+    <menuitem id="rental_customer_menu"
+              name="Customer Data"
+              parent="property_rental_root_menu"
+    />
+
+<!--    services menu and submenu -->
+
+    <menuitem id="rental_services_menu"
+              name="Services"
+              sequence="10"
+              parent="property_rental_root_menu"
+    />
+
+
+
+
+</odoo>

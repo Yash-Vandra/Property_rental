@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+Property_rental.access_customer_customer,access_customer_customer,Property_rental.model_customer_customer,base.group_user,1,1,1,1
+Property_rental.access_office_office,access_office_office,Property_rental.model_office_office,base.group_user,1,1,1,1
+Property_rental.access_land_land,access_land_land,Property_rental.model_land_land,base.group_user,1,1,1,1
+
+

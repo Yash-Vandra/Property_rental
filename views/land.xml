@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="rental_land_form" model="ir.ui.view">
+        <field name="name">rental.land.form</field>
+        <field name="model">land.land</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="plot_area"/>
+                            <field name="dimensions"/>
+                            <field name="direction_faced"/>
+                            <field name="land_rent"/>
+                        </group>
+                        <group>
+                            <field name="land_img" widget="image"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="rental_land_tree" model="ir.ui.view">
+        <field name="name">rental.land.tree</field>
+        <field name="model">land.land</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="plot_area"/>
+                <field name="dimensions"/>
+                <field name="direction_faced"/>
+                <field name="land_rent"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id='land_actions' model='ir.actions.act_window'>
+        <field name="name">Land</field>
+        <field name="res_model">land.land</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="rental_land_submenu"
+              name="Land"
+              action="land_actions"
+              parent="rental_services_menu"
+              sequence="10"
+    />
+
+</odoo>
+
