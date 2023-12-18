@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="rental_appartment_form" model="ir.ui.view">
+        <field name="name">rental.appartment.form</field>
+        <field name="model">appartment.appartment</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="carpet_area"/>
+                            <field name="deposit_amount"/>
+                            <field name="charges_paid"/>
+                            <field name="house_type"/>
+                            <field name="available_for" widget="radio"/>
+                            <field name="appartment_ac_nonac"/>
+                            <field name="appartment_locality"/>
+                            <field name="appartment_parking" widget="boolean_toggle"/>
+                        </group>
+                        <group>
+                            <field name="appartment_img" widget="image"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="rental_appartment_tree" model="ir.ui.view">
+        <field name="name">rental.appartment.form</field>
+        <field name="model">appartment.appartment</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="carpet_area"/>
+                <field name="deposit_amount"/>
+                <field name="charges_paid"/>
+                <field name="house_type"/>
+                <field name="appartment_ac_nonac"/>
+                <field name="appartment_locality"/>
+
+                <field name="appartment_parking" widget="boolean_toggle"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id='appartments_actions' model='ir.actions.act_window'>
+        <field name="name">Appartments</field>
+        <field name="res_model">appartment.appartment</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="rental_services_appartment_submenu"
+              name="Appartments"
+              action="appartments_actions"
+              parent="rental_services_menu"
+              sequence="10"
+    />
+
+</odoo>
+

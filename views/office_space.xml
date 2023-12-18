@@ -11,7 +11,7 @@
                             <field name="name"/>
                             <field name="building_area"/>
                             <field name="age_of_building"/>
-                            <field name="office_rent"/>
+                            <field name="office_charges_paid"/>
                             <field name="office_floor"/>
                             <field name="office_address"/>
                             <field name="office_location"/>
@@ -19,7 +19,6 @@
                         <group>
                             <field name="image_office" widget="image"/>
                         </group>
-
                     </group>
                 </sheet>
             </form>
@@ -34,10 +33,10 @@
                 <field name="name"/>
                 <field name="building_area"/>
                 <field name="age_of_building"/>
+                <field name="office_charges_paid"/>
                 <field name="office_floor"/>
                 <field name="office_address"/>
                 <field name="office_location" widget="url"/>
-                <field name="office_rent"/>
             </tree>
         </field>
     </record>

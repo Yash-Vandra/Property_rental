@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="customer_invoice_form" model="ir.ui.view">
+        <field name="name">customer.invoice.form</field>
+        <field name="model">customer.invoices</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div>
+                        <h1>
+                            <field name="customer_invoice_number"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="property_name"/>
+                            <field name="duration_of_stay"/>
+                        </group>
+                        <group>
+                            <field name="date_of_invoice"/>
+                            <field name="rent_charges"/>
+                            <field name="payment_status" widget="boolean_toggle"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page name="invoice_line" string="Invoice Line">
+                            <!--invoice code-->
+                        </page>
+                        <page name="other_info" string="Other Information">
+                            <!--other info-->
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="customer_invoice_tree" model="ir.ui.view">
+        <field name="name">customer.invoice.form</field>
+        <field name="model">customer.invoices</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="property_name"/>
+                <field name="rent_charges"/>
+                <field name="duration_of_stay"/>
+                <field name="customer_invoice_number"/>
+                <field name="date_of_invoice"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id='customer_invoice_actions' model='ir.actions.act_window'>
+        <field name="name">Customer Invoices</field>
+        <field name="res_model">customer.invoices</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="rental_customer_invoice_submenu"
+              name="Customer Invoices"
+              action="customer_invoice_actions"
+              parent="rental_customer_menu"
+              sequence="10"
+    />
+</odoo>
+

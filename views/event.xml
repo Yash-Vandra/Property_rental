@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="rental_event_form" model="ir.ui.view">
+        <field name="name">rental.event.form</field>
+        <field name="model">event.event</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="event_name"/>
+                            <field name="mode_of_payment"/>
+                            <field name="seating_capacity"/>
+                            <field name="event_address"/>
+                            <field name="event_charges_paid"/>
+                        </group>
+                        <group>
+                            <field name="event_img" widget="image"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="rental_event_tree" model="ir.ui.view">
+        <field name="name">rental.event.tree</field>
+        <field name="model">event.event</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="event_name"/>
+                <field name="mode_of_payment"/>
+                <field name="seating_capacity"/>
+                <field name="event_address"/>
+                <field name="event_charges_paid"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id='events_actions' model='ir.actions.act_window'>
+        <field name="name">Events</field>
+        <field name="res_model">event.event</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="rental_services_event_submenu"
+              name="Events"
+              action="events_actions"
+              parent="rental_services_menu"
+              sequence="10"
+    />
+
+</odoo>
+

@@ -5,30 +5,40 @@
         <field name="model">customer.customer</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button name="update_customer_invoice" class="oe_highlight" type="object" string="Generate Invoice"/>
+                </header>
                 <sheet>
                     <div class="oe_button_box" name="button_box">
-                        <button class="oe_stat_button" type="object" name="customer_preview" string="Customer Preview"
-                                icon="fa-users">
-                            <div class="o_field_widget o_start_info">
-                                <span class="o_start_text">Customer</span>
-                                <span class="o_start_text">Preview</span>
+                        <button name="customer_preview" type="object" class="oe_stat_button"
+                                icon="fa-angle-double-right">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">Customer</span>
+                                <span class="o_stat_text">Preview</span>
                             </div>
                         </button>
                     </div>
+
+                    <div>
+                        <h1>
+                            <field name="customer_id"/>
+                        </h1>
+                    </div>
                     <group>
                         <group>
+
                             <field name="name"/>
-                            <field name="last_name"/>
                             <field name="email" widget="email"/>
-                            <field name="phone"/>
+                            <field name="phone" widget="phone"/>
                             <field name="start_date"/>
                             <field name="end_date"/>
+                            <field name="duration_of_stay"/>
                         </group>
                         <group>
+                            <field name="last_name"/>
                             <field name="documents"/>
                             <field name="property_name"/>
-                            <field name="charges_paid"/>
-                            <field name="duration_of_stay"/>
+                            <field name="rent_charges"/>
                             <field name="rent_agreement_copy"/>
                         </group>
                     </group>
@@ -48,9 +58,9 @@
                 <field name="phone"/>
                 <field name="documents"/>
                 <field name="property_name"/>
-                <field name="charges_paid"/>
                 <field name="start_date"/>
                 <field name="duration_of_stay"/>
+                <field name="rent_charges"/>
                 <field name="rent_agreement_copy"/>
             </tree>
         </field>

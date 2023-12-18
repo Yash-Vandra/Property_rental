@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pg_rooms_form" model="ir.ui.view">
+        <field name="name">pg.rooms.form</field>
+        <field name="model">pg.rooms</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="deposit_amount"/>
+                            <field name="pg_charges_paid"/>
+                            <field name="room_type"/>
+                            <field name="ac_nonac"/>
+                            <field name="available_for" widget="radio"/>
+                            <field name="locality"/>
+                            <field name="parking" widget="boolean_toggle"/>
+                        </group>
+                        <group>
+                            <field name="pg_img" widget="image"/>
+                        </group>
+
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="pg_rooms_tree" model="ir.ui.view">
+        <field name="name">pg.rooms.tree</field>
+        <field name="model">pg.rooms</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="deposit_amount"/>
+                <field name="pg_charges_paid"/>
+                <field name="room_type"/>
+                <field name="ac_nonac"/>
+                <field name="locality"/>
+                <field name="parking" widget="boolean_toggle"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id='pg_rooms_actions' model='ir.actions.act_window'>
+        <field name="name">Pg Rooms</field>
+        <field name="res_model">pg.rooms</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="rental_services_pgrooms_submenu"
+              name="Pg Rooms"
+              action="pg_rooms_actions"
+              parent="rental_services_menu"
+              sequence="10"
+    />
+
+</odoo>
+

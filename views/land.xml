@@ -12,7 +12,7 @@
                             <field name="plot_area"/>
                             <field name="dimensions"/>
                             <field name="direction_faced"/>
-                            <field name="land_rent"/>
+                            <field name="land_charges_paid"/>
                         </group>
                         <group>
                             <field name="land_img" widget="image"/>
@@ -32,7 +32,7 @@
                 <field name="plot_area"/>
                 <field name="dimensions"/>
                 <field name="direction_faced"/>
-                <field name="land_rent"/>
+                <field name="land_charges_paid"/>
             </tree>
         </field>
     </record>
