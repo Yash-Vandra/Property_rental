@@ -1,7 +1,7 @@
 from odoo import models,fields,api
 
 class OfficeSpace(models.Model):
-    _name = 'office.office'
+    _name = 'office.space'
     _description = "Services That Provided"
 
     name = fields.Many2one('customer.customer',string="Customer Name")

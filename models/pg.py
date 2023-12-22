@@ -13,8 +13,10 @@ class Pgrooms(models.Model):
     locality = fields.Selection([('vastapur','Vastrapur'),('ellis_bridge','Ellis Bridge'),('naranpura','Naranpura'),('ambawadi','Ambawadi'),('maninagar','Maninagar'),('gota','Gota'),('cg_road','CG Road'),('chandkheda','Chandkheda'),('ghatlodiya','Ghatlodiya'),('chandlodiya','Chandlodiya'),('thaltej','Thaltej'),('vatva','Vatva')],required='no copy')
     parking = fields.Boolean("Parking")
     pg_charges_paid  = fields.Float(string='Charges Paid ', required=True)
-
     pg_img = fields.Char("Img")
+
+
+
 
 
 
