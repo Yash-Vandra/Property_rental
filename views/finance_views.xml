@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="finance_form" model="ir.ui.view">
+        <field name="name">finance.form</field>
+        <field name="model">finance.finance</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" readonly="1"/>
+                            <field name="property_services_list"/>
+                            <field name="per_quarter"/>
+                        </group>
+                        <group>
+                            <field name="per_property_income"/>
+                            <field name="total_income"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="finance_tree" model="ir.ui.view">
+        <field name="name">finance.tree</field>
+        <field name="model">finance.finance</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="property_services_list"/>
+                <field name="per_quarter"/>
+                <field name="per_property_income"/>
+                <field name="total_income"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id='finance_actions' model='ir.actions.act_window'>
+        <field name="name">Finance</field>
+        <field name="res_model">finance.finance</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="finance_submenu"
+              name="Finance Records"
+              action="finance_actions"
+              parent="finance_menu"
+              sequence="10"
+    />
+
+</odoo>
+

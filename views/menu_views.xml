@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-<!--    root menu -->
+    <!--    root menu -->
     <menuitem id="property_rental_root_menu"
               name="Rental Property"
               sequence="10"
@@ -10,7 +10,7 @@
               parent="property_rental_root_menu"
     />
 
-<!--    services menu and submenu -->
+    <!--    services menu -->
 
     <menuitem id="rental_services_menu"
               name="Services"
@@ -18,7 +18,17 @@
               parent="property_rental_root_menu"
     />
 
-
-
+    <!-- broker menu-->
+    <menuitem id="broker_department_menu"
+              name="Broker Department"
+              sequence="10"
+              parent="property_rental_root_menu"
+    />
+    <!-- finance menu-->
+    <menuitem id="finance_menu"
+              name="Finance"
+              sequence="10"
+              parent="property_rental_root_menu"
+    />
 
 </odoo>

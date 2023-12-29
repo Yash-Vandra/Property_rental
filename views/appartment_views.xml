@@ -39,7 +39,6 @@
                 <field name="house_type"/>
                 <field name="appartment_ac_nonac"/>
                 <field name="appartment_locality"/>
-
                 <field name="appartment_parking" widget="boolean_toggle"/>
             </tree>
         </field>

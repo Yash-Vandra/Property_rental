@@ -4,25 +4,33 @@ from datetime import date, datetime
 
 class Customer(models.Model):
     _name = 'customer.customer'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = "Customer Data"
 
     # _rec_name = 'customer_id'
     name = fields.Char(string="First Name")
-    mycompany_name = fields.Char(string="Company Name")
+    mycompany_name = fields.Char(string="Company Name", readonly=True)
     last_name = fields.Char(string="Last Name")
     email = fields.Char(string="Email Id", required=True)
     phone = fields.Char(string="Phone")
     documents = fields.Binary(string="Documents", required=False)
-    property_name = fields.Selection(
-        [('office_space', 'OFFICE SPACE'), ('land', 'LAND'), ('event', 'Event'), ('pg_rooms', 'PG ROOMS'),
-         ('appartments', 'Appartments')], string="Property", required=True)
-    start_date = fields.Date(string="Date")
+    property_name = fields.Selection([('office_space', 'OFFICE SPACE'),
+                                      ('land', 'LAND'),
+                                      ('event', 'Event'),
+                                      ('pg_rooms', 'PG ROOMS'),
+                                      ('appartments', 'Appartments')],
+                                     string="Property", required=True)
+    start_date = fields.Date(string="Start Date", default=datetime.now())
     end_date = fields.Date(string="End Date")
     duration_of_stay = fields.Float(string="Duration")
     rent_charges = fields.Float(string="Rent Charges")
     rent_agreement_copy = fields.Binary("Rent Agreement", required=False)
-
     customer_id = fields.Char("Customer Id", readonly=True)
+    total_amount = fields.Char(string="Total Amount")
+
+    @api.onchange('duration_of_stay', 'rent_charges')
+    def onchange_total_amount(self):
+        self.total_amount = self.duration_of_stay * self.rent_charges
 
     def customer_preview(self):
         print("Clicked..................................")
@@ -42,11 +50,46 @@ class Customer(models.Model):
     def update_customer_invoice(self):
         print('Invoiced.......................')
         self.env['customer.invoices'].create({
-            # 'name':self.name,
+            'name': self.name,
             'duration_of_stay': self.duration_of_stay,
             'property_name': self.property_name,
+            'start_date': self.start_date,
             'rent_charges': self.rent_charges,
+            'total_amount': self.total_amount,
         })
+
+    # to update services
+    def update_services(self):
+        print('Updated Services.......................')
+        if self.property_name == 'office_space':
+            print('**__**--**')
+            self.env['office.space'].create({
+                'name': self.name,
+                'office_charges_paid': self.rent_charges,
+            })
+        elif self.property_name == 'land':
+            self.env['land.land'].create({
+                # 'name': self.name,
+                'land_charges_paid': self.rent_charges,
+            })
+        elif self.property_name == 'pg_rooms':
+            self.env['pg.rooms'].create({
+                # 'name': self.name,
+                'pg_charges_paid': self.rent_charges,
+            })
+
+        elif self.property_name == 'appartments':
+            self.env['appartment.appartment'].create({
+                # 'name': self.name,
+                'charges_paid': self.rent_charges,
+            })
+        elif self.property_name == 'event':
+            self.env['event.event'].create({
+                # 'name': self.name,
+                'event_charges_paid': self.rent_charges,
+            })
+        else:
+            print('Select Property Name ')
 
     # serial number and company name
     @api.model

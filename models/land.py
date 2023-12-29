@@ -5,8 +5,8 @@ class Land(models.Model):
     _description = "Land details"
 
 
-    name = fields.Many2one('customer.customer',string="Customer Name")
-    # name = fields.Char(string="Customer Name")
+    # name = fields.Many2one('customer.customer',string="Customer Name")
+    name = fields.Char(string="Customer Name")
     plot_area = fields.Float(string="Plot Area(Sq.ft)")
     dimensions = fields.Char(string="Dimensions(L x B)")
     direction_faced = fields.Char(string="Facing")

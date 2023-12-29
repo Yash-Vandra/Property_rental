@@ -1,6 +1,6 @@
 {
     'name': "Rental Property",
-    'depends':['base','sale_management'],
+    'depends':['base','sale_management','mail'],
     'data': [
         'views/menu_views.xml',
         'views/customer_views.xml',
@@ -10,6 +10,8 @@
         'views/appartment_views.xml',
         'views/event_views.xml',
         'views/customer_invoice_views.xml',
+        'views/broker_views.xml',
+        'views/finance_views.xml',
         'data/ir_sequence_data.xml',
         'security/ir.model.access.csv',
     ],

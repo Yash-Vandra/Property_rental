@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="broker_form_view" model="ir.ui.view">
+        <field name="name">broker.form.view</field>
+        <field name="model">broker.broker</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="email" widget="email"/>
+                            <field name="phone" widget="phone"/>
+                        </group>
+                        <group>
+                            <field name="broker_license"/>
+                            <field name="identity_proof"/>
+                            <field name="commission_charges"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="broker_tree_view" model="ir.ui.view">
+        <field name="name">broker.tree.view</field>
+        <field name="model">broker.broker</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="email"/>
+                <field name="phone"/>
+                <field name="commission_charges"/>
+                <field name="identity_proof"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id='broker_actions' model='ir.actions.act_window'>
+        <field name="name">Broker Details</field>
+        <field name="res_model">broker.broker</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="broker_submenu"
+              name="Broker Data"
+              action="broker_actions"
+              parent="broker_department_menu"
+              sequence="10"
+    />
+
+</odoo>
+
