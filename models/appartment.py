@@ -5,7 +5,6 @@ class Appartment(models.Model):
     _name = 'appartment.appartment'
     _description = "Appartment Provided"
 
-    # name = fields.Many2one('customer.customer', string="Customer Name")
     name = fields.Char(string="Customer Name")
 
     carpet_area = fields.Integer("Carpet Area")

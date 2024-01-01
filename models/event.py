@@ -5,7 +5,6 @@ class Event(models.Model):
     _name = 'event.event'
     _description = "rental proprety for the event"
 
-    # name = fields.Many2one('customer.customer', string="Customer Name")
     name = fields.Char(string="Customer Name",required=True)
     event_name = fields.Selection([('wedding', 'Wedding'),
                                    ('birthday', 'Birthday Party'),

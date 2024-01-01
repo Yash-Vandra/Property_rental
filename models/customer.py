@@ -26,14 +26,17 @@ class Customer(models.Model):
     rent_charges = fields.Float(string="Rent Charges")
     rent_agreement_copy = fields.Binary("Rent Agreement", required=False)
     customer_id = fields.Char("Customer Id", readonly=True)
-    total_amount = fields.Char(string="Total Amount")
+    total_amount = fields.Char(string="Total Amount",store=True)
+
 
     @api.onchange('duration_of_stay', 'rent_charges')
     def onchange_total_amount(self):
         self.total_amount = self.duration_of_stay * self.rent_charges
 
+
     def customer_preview(self):
         print("Clicked..................................")
+
 
     @api.onchange('start_date', 'end_date')
     def onchange_duration(self):
@@ -46,6 +49,7 @@ class Customer(models.Model):
                     months_to_cut = self.start_date.month - self.end_date.month
                     self.duration_of_stay = total_months - months_to_cut
 
+
     # to make/update invoice
     def update_customer_invoice(self):
         print('Invoiced.......................')
@@ -57,6 +61,7 @@ class Customer(models.Model):
             'rent_charges': self.rent_charges,
             'total_amount': self.total_amount,
         })
+
 
     # to update services
     def update_services(self):
@@ -91,6 +96,7 @@ class Customer(models.Model):
         else:
             print('Select Property Name ')
 
+
     # serial number and company name
     @api.model
     def create(self, vals):
@@ -98,6 +104,24 @@ class Customer(models.Model):
         vals['mycompany_name'] = 'Rental Services Pvt.Ltd'
         return super(Customer, self).create(vals)
 
+
     def write(self, vals):
         vals['mycompany_name'] = 'Rental Services Pvt.Ltd'
         return super(Customer, self).write(vals)
+
+
+    # unlink method for if customer records deleted , it stores in the customer invoices
+
+    def unlink(self):
+        self.env['customer.invoices'].create({
+            'name': self.name,
+            'duration_of_stay': self.duration_of_stay,
+            'property_name': self.property_name,
+            'start_date': self.start_date,
+            'rent_charges': self.rent_charges,
+            'total_amount': self.total_amount,
+        })
+
+        rtn = super(Customer, self).unlink()
+        print('--------------->', rtn)
+        return rtn

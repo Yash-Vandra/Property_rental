@@ -5,7 +5,6 @@ class CustomerInvoices(models.Model):
     _name = 'customer.invoices'
     _description = 'Customer invoice'
 
-    # name = fields.Many2one('customer.customer', string="Customer Name")
     # name = fields.Char(string="Customer Name")
     date_of_invoice = fields.Date("Invoice Date")
     customer_invoice_number = fields.Char(string='Customer Invoice Id', readonly=True)

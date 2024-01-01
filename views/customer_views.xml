@@ -50,7 +50,7 @@
                                 <field name="property_name"/>
                                 <field name="rent_charges"/>
                                 <field name="rent_agreement_copy"/>
-                                <field name="total_amount" readonly="1"/>
+                                <field name="total_amount" readonly="1" force_save="1"/>
                             </group>
                         </group>
                     </div>
