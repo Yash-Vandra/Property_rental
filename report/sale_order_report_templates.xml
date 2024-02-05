@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="report_saleorder_document_inherit_sale_rental" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//th[@name='th_quantity']" position="before">
+            <div class="col-auto col-3 mw-100 mb-2">
+                <th name="th_internal_ref" class="text-start">Internal Reference</th>
+            </div>
+        </xpath>
+        <xpath expr="//td[@name='td_quantity']" position="before">
+            <td>
+                <span t-field='line.product_template_id.default_code'/>
+            </td>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!--group of rental user     -->
+    <record id="group_rental_user" model="res.groups">
+        <field name="name">Rental User</field>
+        <field name="category_id" ref="module_category_rental"/>
+    </record>
+    <!--group of rental manager    -->
+    <record id="group_rental_manager" model="res.groups">
+        <field name="name">Rental Manager</field>
+        <field name="category_id" ref="module_category_rental"/>
+        <!--        <field name="implied_ids" eval="[(3, ref('group_rental_user'))]"/>-->
+    </record>
+    <!--group of rental administration -->
+    <record id="group_rental_administrator" model="res.groups">
+        <field name="name">Rental Administrator</field>
+        <field name="category_id" ref="module_category_rental"/>
+        <!--        <field name="implied_ids" eval="[(3, ref('group_rental_manager'))]"/>-->
+    </record>
+    <!--Category    -->
+    <record model="ir.module.category" id="module_category_rental">
+        <field name="name">Rental Property</field>
+    </record>
+
+
+        <record id="ir_rule_rental_for_user" model="ir.rule">
+            <field name="name">Rental</field>
+            <field name="model_id" ref="model_finance_finance"/>
+            <field name="groups" eval="[(4, ref('group_rental_user'))]"/>
+            <field name="domain_force">[(1 ,'=', 1)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+            <field name="active" eval="True"/>
+        </record>
+
+        <record id="ir_rule_rental_for_manager" model="ir.rule">
+            <field name="name">Rental Manager</field>
+            <field name="model_id" ref="model_finance_finance"/>
+            <field name="groups" eval="[(4, ref('group_rental_manager'))]"/>
+            <field name="domain_force">[(1 ,'=', 1)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+            <field name="active" eval="True"/>
+        </record>
+
+        <record id="ir_rule_rental_for_administrator" model="ir.rule">
+            <field name="name">Rental Admin</field>
+            <field name="model_id" ref="model_finance_finance"/>
+            <field name="groups" eval="[(4, ref('group_rental_administrator'))]"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+            <field name="active" eval="True"/>
+        </record>
+
+</odoo>

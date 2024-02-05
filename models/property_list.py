@@ -1,12 +1,11 @@
 from odoo import models, fields, api
 
 
-class OfficeSpace(models.Model):
-    _name = 'office.space'
-    _description = "Services That Provided"
+class PropertyList(models.Model):
+    _name = 'property.list'
+    _description = "Property List details"
 
-    # name = fields.Many2one('customer.customer',string="Customer Name")
-    name = fields.Char(string="Customer Name")
+    name = fields.Char(string="Property Name")
     # name_one = fields.Char(string="Customer Name")
 
     building_area = fields.Float(string="Building area(Sq.ft)")
@@ -23,10 +22,8 @@ class OfficeSpace(models.Model):
                                             ('internet_banking', 'Internet Banking')],
                                            string='Payment Mode')
 
-    image_office = fields.Binary(string='IMG')
 
-    # server action of office allocation
-    def office_space_allocation(self):
+    def property_list_allocation(self):
         print('Server action______________________')
         return {
             "name": "Allocated Office",
@@ -37,6 +34,3 @@ class OfficeSpace(models.Model):
             'target': 'new',
             'view_id': self.env.ref('Property_rental.customer_office_data_wizard_form').id,
         }
-    # wizard onchange on customer
-
-

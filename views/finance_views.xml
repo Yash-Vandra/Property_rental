@@ -13,7 +13,8 @@
                             <field name="per_quarter"/>
                         </group>
                         <group>
-                            <field name="per_property_income" attrs="{'invisible':[('property_services_list','=','all')]}"/>
+                            <field name="per_property_income"
+                                   attrs="{'invisible':[('property_services_list','=','all')]}"/>
                             <field name="total_income" attrs="{'invisible':[('property_services_list','!=','all')]}"/>
                         </group>
                     </group>

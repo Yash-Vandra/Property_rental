@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="action_server_module_office_space" model="ir.actions.server">
+            <field name="name">Allocated Office</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_office_space"/>
+            <field name="binding_model_id" ref="model_office_space"/>
+            <field name="state">code</field>
+            <field name="code">
+                action=records.office_space_allocation()
+            </field>
+        </record>
+
+        <record id="action_server_module_property_list" model="ir.actions.server">
+            <field name="name">Property List</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_property_list"/>
+            <field name="binding_model_id" ref="model_property_list"/>
+            <field name="state">code</field>
+            <field name="code">
+                action=records.property_list_allocation()
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="website_officespace" name="Office Space">
+        <t t-call="website.layout">
+            <div class="oe_structure">
+                <div class="container">
+                    <br/>
+                    <center>
+                        <h3>Office Space</h3>
+                    </center>
+                    <br/>
+                    <div class="container">
+                        <group>
+                            <table>
+                                <tbody>
+                                    <t t-foreach="records_rental_office" t-as="office">
+                                        <tr>
+                                            <td>
+                                                <img t-att-src="image_data_uri(office.image_office)"
+                                                     style="max-height:150pt;max-width:80%"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </group>
+                    </div>
+
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

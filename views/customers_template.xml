@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="website_res_customer" name="Customer">
+        <t t-call="website.layout">
+            <div class="container">
+                <br/>
+                <center>
+                    <h3>Customer</h3>
+                </center>
+                <br/>
+                <div class="container">
+                    <table class="table table-bordered" style="table-layout: fixed">
+                        <tbody class="container">
+                            <tr>
+                                <td>
+                                    <div class="container">
+                                        <div class="oe_structure">
+                                            <div class="row">
+                                                <t t-foreach="res_customers" t-as="customer">
+                                                    <div class="col">
+                                                        <a t-att-href="'/customer/views/%s' %(customer.id)">
+                                                            <!--<a t-att-href="'/contact/details/%s' %(con.id)"-->
+                                                            <img t-att-src="image_data_uri(customer.avatar_128)"
+                                                                 style="max-height:150pt;max-width:80%"/>
+                                                            <p t-esc="customer.name"/>
+                                                            <p t-esc="customer.function"/>
+                                                            <p t-esc="customer.email"/>
+                                                            <p t-esc="customer.website"/>
+                                                        </a>
+                                                    </div>
+                                                </t>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

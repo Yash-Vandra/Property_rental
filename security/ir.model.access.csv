@@ -7,7 +7,14 @@ Property_rental.access_appartment_appartment,access_appartment_appartment,Proper
 Property_rental.access_event_event,access_event_event,Property_rental.model_event_event,base.group_user,1,1,1,1
 Property_rental.access_customer_invoices,access_customer_invoices,Property_rental.model_customer_invoices,base.group_user,1,1,1,1
 Property_rental.access_broker_broker,access_broker_broker,Property_rental.model_broker_broker,base.group_user,1,1,1,1
-Property_rental.access_finance_finance,access_finance_finance,Property_rental.model_finance_finance,base.group_user,1,1,1,1
+Property_rental.access_customer_office_data,access_customer_office_data,Property_rental.model_customer_office_data,base.group_user,1,1,1,1
+Property_rental.access_property_list,access_property_list,Property_rental.model_property_list,base.group_user,1,1,1,1
+Property_rental.access_warning_wizard,access_warning_wizard,Property_rental.model_warning_wizard,base.group_user,1,1,1,1
+
+
+
+
+
 
 
 

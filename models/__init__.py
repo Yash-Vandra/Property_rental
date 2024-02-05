@@ -7,3 +7,4 @@ from . import event
 from . import customer_invoice
 from . import broker
 from . import finance
+from . import property_list

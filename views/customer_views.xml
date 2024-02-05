@@ -10,6 +10,8 @@
                             string="Generate Invoice"/>
                     <button name="update_services" class="oe_highlight" type="object"
                             string="Update Services"/>
+                    <button name="click_oe_chatter" class="oe_highlight" type="object"
+                            string="Click Chatter"/>
                 </header>
                 <sheet>
                     <div class="oe_button_box" name="button_box">
@@ -36,7 +38,6 @@
                     <div>
                         <group>
                             <group>
-
                                 <field name="name"/>
                                 <field name="email" widget="email"/>
                                 <field name="phone" widget="phone"/>
@@ -52,12 +53,12 @@
                                 <field name="rent_agreement_copy"/>
                                 <field name="total_amount" readonly="1" force_save="1"/>
                             </group>
+                            <field name="property_list"/>
                         </group>
                     </div>
                 </sheet>
 
-                <!--                chatter-->
-
+                <!-- chatter-->
                 <div class="oe_chatter">
                     <field name="message_follower_ids" groups="base.group_user"/>
                     <field name="activity_ids"/>

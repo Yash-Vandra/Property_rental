@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="property_list_form_view" model="ir.ui.view">
+        <field name="name">property.list.form.view</field>
+        <field name="model">property.list</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="building_area"/>
+                            <field name="age_of_building"/>
+                            <field name="office_charges_paid"/>
+                        </group>
+                        <group>
+                            <field name="office_floor"/>
+                            <field name="office_address"/>
+                            <field name="office_location"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="property_list_tree_view" model="ir.ui.view">
+        <field name="name">property.list.tree.view</field>
+        <field name="model">property.list</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="building_area"/>
+                <field name="age_of_building"/>
+                <field name="office_charges_paid"/>
+                <field name="office_floor"/>
+                <field name="office_address"/>
+                <field name="office_location"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id='property_list_actions' model='ir.actions.act_window'>
+        <field name="name">Property List</field>
+        <field name="res_model">property.list</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="property_list_submenu"
+              name="Property"
+              action="property_list_actions"
+              parent="broker_department_menu"
+              sequence="10"
+    />
+
+</odoo>
+

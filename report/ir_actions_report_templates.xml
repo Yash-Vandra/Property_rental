@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+
+    <template id="report_rental_customer_invoice">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2 class="mt-4">
+                            <span t-if="env.context.get('proforma', False) or is_pro_forma">Pro-Forma Invoice #</span>
+                            <span t-else="">Order #</span>
+                            <span t-field="o.customer_invoice_number"/>
+                        </h2>
+                        <br/>
+
+                        <h4 class="text-start">Your Bill</h4>
+                        <p>Dear Customer,
+                            <span t-field="o.name"/>
+                        </p>
+                        <div class="row mt-4 mb-4" id="informations">
+                            <div t-if="o.start_date" class="col-auto col-3 mw-100 mb-2" name="informations_startdate">
+                                <span t-if="env.context.get('proforma', False) or is_pro_forma">Pro-Forma Invoice #
+                                </span>
+                                <strong t-else="">Order Date:</strong>
+                                <p class="m-0" t-field="o.start_date" t-options='{"widget": "date"}'/>
+                            </div>
+                            <div class="col-auto col-3 mw-100 mb-2">
+                                <strong align="right">Salesperson:</strong>
+                                <t>Rental pvt.ltd</t>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page">
+                        <h4 class="text-start">Summary</h4>
+                        <p>from
+                            <strong>
+                                <span t-field="o.start_date"/>
+                            </strong>
+                            your duration of stay in
+
+                            <strong>
+                                <span t-field="o.property_name"/>
+                            </strong>
+                            for
+                            <strong>
+                                <span t-field="o.duration_of_stay"/>
+                            </strong>
+                            months completed.
+
+                            <br/>
+
+                            <h4 class="text-start">Your total amount is :</h4>
+                            <t>
+                                <b>
+                                    <span t-field="o.total_amount"/>
+                                </b>
+                            </t>
+                            <t>₹</t>
+                        </p>
+                    </div>
+                </t>
+            </t>
+        </t>
+
+
+    </template>
+
+    <template id="report_customer_invoice">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="Property_rental.report_rental_customer_invoice"/>
+            </t>
+        </t>
+    </template>
+
+</odoo>

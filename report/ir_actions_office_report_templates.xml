@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+
+    <template id="report_rental_office_space">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="">
+
+                            <!--                        <div class="page">-->
+                            <!--                            <h4 class="mt-4" align="left">-->
+                            <!--                                <span t-if="env.context.get('proforma', False) or is_pro_forma">Pro-Forma Invoice #-->
+                            <!--                                </span>-->
+                            <!--                                <span t-else="">Customer</span>-->
+                            <!--                                <br/>-->
+                            <!--                                <span t-field="doc.name"/>-->
+                            <!--                            </h4>-->
+                            <!--                        </div>-->
+<!--                            <div class="oe_structure">-->
+                                <img t-att-src="image_data_uri(doc.image_office)"
+                                     class="border border-dark"
+                                     align="right"
+                                     style="max-height:150pt;max-width:60% me-5;"/>
+<!--                            </div>-->
+                    </div>
+
+                    <br/>
+
+                    <h4 class="text-start">Office space</h4>
+                    <p>Dear Customer,
+                        <span t-field="doc.name"/>
+                    </p>
+                    <div class="page">
+                        <div t-if="doc.office_address" class="col-auto col-3 mw-100 mb-2"
+                             name="informations_">
+                            <span t-if="env.context.get('proforma', False) or is_pro_forma">Pro-Forma Invoice #
+                            </span>
+                            <strong t-else="">Address:</strong>
+                            <p class="m-0" t-field="doc.office_address"/>
+                        </div>
+                        <div class="page">
+                            <strong>Salesperson:</strong>
+                            <br/>
+                            <t>Rental Property pvt.ltd</t>
+                        </div>
+                        <br/>
+                    </div>
+
+
+                    <div class="page">
+                        <h4 class="text-start">Summary</h4>
+                        <p>You paid
+                            <strong>
+                                <span t-field="doc.office_charges_paid"/>
+                            </strong><t>₹</t>
+                            your floor number is
+                            <strong>
+                                <span t-field="doc.office_floor"/>
+                            </strong>
+                            location at
+                            <strong>
+                                <span t-field="doc.office_location"/>
+                            </strong>
+                            <br/>
+                        </p>
+                    </div>
+                </t>
+            </t>
+        </t>
+
+
+    </template>
+
+    <template id="report_office_space">
+        <t t-call="web.html_container">
+            <!--            <t t-foreach="docs" t-as="doc">-->
+            <t t-call="Property_rental.report_rental_office_space"/>
+            <!--            </t>-->
+        </t>
+    </template>
+
+</odoo>

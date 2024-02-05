@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="website_res_customer_list" name="Customer">
+        <t t-call="website.layout">
+            <div class="container">
+                <br/>
+                <center>
+                    <h3>Customer List View</h3>
+                </center>
+                <br/>
+                <div class="container">
+                    <table class="table" style="table-layout: fixed">
+                        <tbody class="container">
+                            <tr>
+                                <td>
+                                    <div class="container">
+                                        <div class="oe_structure">
+                                            <div class="d-flex justify-content-center">
+                                                <div>
+                                                    <img t-att-src="image_data_uri(res_customers_view.avatar_128)"
+                                                         border="2pt solid black"
+                                                         style="max-height:150pt;max-width:80%"/>
+                                                </div>
+                                                <div>
+                                                    <p t-esc="res_customers_view.name"/>
+                                                    <p t-esc="res_customers_view.function"/>
+                                                    <p t-esc="res_customers_view.email"/>
+                                                    <p t-esc="res_customers_view.website"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

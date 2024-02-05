@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--Customer invoice Qweb report    -->
+    <record id="action_report_rental_customer_invoice" model="ir.actions.report">
+        <field name="name">Invoice Report</field>
+        <field name="model">customer.invoices</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">Property_rental.report_rental_customer_invoice</field>
+        <field name="report_file">Property_rental.report_rental_customer_invoice</field>
+        <field name="print_report_name">'Your Bill - %s' % (object.name)</field>
+        <field name="binding_model_id" ref="model_customer_invoices"/>
+        <field name="binding_type">report</field>
+    </record>
+
+
+    <!--Office space Qweb report   -->
+    <record id="action_report_rental_office_space" model="ir.actions.report">
+        <field name="name">Office Report</field>
+        <field name="model">office.space</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">Property_rental.report_rental_office_space</field>
+        <field name="report_file">Property_rental.report_rental_office_space</field>
+        <field name="print_report_name">'Office Space - %s' % ("Your Office")</field>
+        <field name="binding_model_id" ref="model_office_space"/>
+        <field name="binding_type">report</field>
+    </record>
+
+</odoo>

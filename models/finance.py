@@ -6,10 +6,10 @@ class Finance(models.Model):
     _description = 'Finance Details'
 
     name = fields.Char(string="Company name", default='Rental Services Pvt.Ltd')
-    property_services_list =  fields.Selection([('office_space', 'OFFICE SPACE'),
-                                      ('land', 'LAND'),
+    property_services_list =  fields.Selection([('office_space', 'Office Space'),
+                                      ('land', 'Land'),
                                       ('event', 'Event'),
-                                      ('pg_rooms', 'PG ROOMS'),
+                                      ('pg_rooms', 'Pg Rooms'),
                                       ('appartments', 'Appartments'),
                                       ('all','All')],
                                      string="Property List")
@@ -22,8 +22,10 @@ class Finance(models.Model):
     per_property_income = fields.Char(string='Property Income')
     total_income = fields.Char(string='Total Amount')
 
+
+    # calculate per property income generation and total income generation
     @api.onchange('property_services_list')
-    def sum_office_space(self):
+    def _onchange_sum_office_space(self):
         total_income_per_property = 0
         income_per_property = self.env['customer.invoices'].search([('property_name','=',self.property_services_list)])
         # print(income_per_property,'----------------------------------')
@@ -39,6 +41,9 @@ class Finance(models.Model):
             for record in total_generation_ofincome:
                 (generation_of_income) = float(generation_of_income) + float(record['total_amount'])
                 self.total_income = generation_of_income
+
+
+
 
 
 
